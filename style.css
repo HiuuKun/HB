@@ -1,0 +1,220 @@
+:root{
+  --primary: #ffedfc;
+  --bg-color: rgb(151, 26, 26);
+  --bg-envelope-color: #f5edd1;
+  --envelope-tab: #ecdeb8;
+  --envelope-cover: #e6cfa7;
+  --shadow-color: rgba(0, 0, 0, 0.2);
+  --txt-color: #444;
+  --heart-color: rgb(252, 8, 61);
+}
+body{
+  font-family: "sans-serif", "sans-serif", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+  background-size: 400% 400%;
+  display: absolute;
+  align-items: center;
+  justify-content: center;
+  
+}
+.container {
+  position: relative;
+  height: 65vh;
+  display: grid;
+  place-items: center;
+  transition: transform 0.5s ease-in-out 1s;
+}
+.container > .envelope-wrapper {
+  background: var(--bg-envelope-color);
+  box-shadow: 0 0 40px var(--shadow-color);
+  
+  
+}
+.envelope-wrapper > .envelope {
+  position: relative;
+  width: 400px;
+  height: 230px;
+  
+}
+.envelope-wrapper > .envelope::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  z-index: 2;
+  border-top: 110px solid var(--envelope-tab);
+  border-right: 200px solid transparent;
+  border-left: 200px solid transparent;
+  transform-origin: top;
+  transition: all 0.5s ease-in-out 0.7s;
+}
+.envelope-wrapper > .envelope::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  width: 0px;
+  height: 0px;
+  border-top: 110px solid transparent;
+  border-right: 200px solid var(--envelope-cover);
+  border-bottom: 135px solid var(--envelope-cover);
+  border-left: 200px solid var(--envelope-cover);
+  transition: all 0.5s ease-in-out 0.7s;
+}
+.envelope > .letter {
+  position: absolute;
+  right: 20%;
+  bottom: 0;
+  width: 55%;
+  height: 80%;
+  background: var(--primary);
+  text-align: center;
+  transition: all 1s ease-in-out;
+  box-shadow: 0 0 5px var(--shadow-color);
+  padding: 20px 10px;
+  
+}
+
+.envelope > .letter > .text {
+  font-family: "Times New Roman", Times, serif;
+  color: var(--txt-color);
+  text-align: left;
+  font-size: 9px;
+}
+.heart {
+  position: absolute;
+  top:49%;
+  left: 50%;
+  width: 17px;
+  height: 17px;
+  background: var(--heart-color);
+  z-index: 5;
+  transform: translate(-50%, -20%) rotate(45deg);
+  transition: transform 0.5s ease-in-out 1s;
+  box-shadow: 0 1px 8px var(--shadow-color);
+  cursor: pointer;
+}
+
+.heart:before, 
+.heart:after {
+  content: "";
+  position: absolute;
+  width: 17px;
+  height: 17px;
+  background-color: var(--heart-color);
+  border-radius: 50%;
+  z-index: 5;
+}
+.heart:before {
+  top: -10.5px;
+}
+.heart:after {
+  right: 10.5px;
+}
+.flap{
+  transform: translateY(450px); 
+  transition: all 0.8s ease-in-out 1s;
+}
+.flap >.envelope-wrapper >.envelope:before {
+  transform: rotateX(180deg);
+  z-index: 0;
+  
+}
+.flap>.envelope-wrapper > .envelope > .letter {
+  bottom: 440px;
+  transform: scale(1.8);
+  transition-delay: 1s;
+  
+}
+.flap >.envelope-wrapper> .heart {
+  transform: rotate(90deg);
+  transition-delay: 0.4s;
+  z-index: 5; 
+}
+.navbar {
+  display: flex;
+  justify-content: center;
+  background-color: #1e1e1e;
+  padding: 10px;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #ffffff;
+  padding: 10px 20px;
+  margin: 0 10px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 5px;
+  position: relative;
+  z-index: 1;
+  transition: color 0.4s ease;
+}
+
+.navbar a:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 5px;
+  background: linear-gradient(45deg, #ff006a, #ff00ff, #ff006a);
+  z-index: -1;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+.navbar a:hover:before {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.navbar a:hover {
+  color: #560000;
+}
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 60px;
+  padding: 60px 30px;
+}
+
+/* .gallery img {
+  width: 250px;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+} */
+.normal-img{
+  width: 250px;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+.special-img {
+  width: 500px; /* New width */
+  height: 350px; /* New height */
+  object-fit: cover;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+.gallery img:hover {
+  transform: scale(1.1);
+}
+canvas { position: absolute;display:none; z-index:2; width:1000px;}
+strong {
+  color: #e80000;
+}
+.indent{
+  padding-left: 80px;
+  line-height: 1.8;
+}
